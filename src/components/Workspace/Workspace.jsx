@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import CaseOne from './cases/CaseOne';
-import CaseTwo from './cases/CaseTwo';
-import CaseThree from './cases/CaseThree';
+import {CaseOne, CaseTwo, CaseThree} from './Cases';
+
+import { block } from 'bem-cn';
+
+const cl = block('case-label');
 
 class Workspace extends React.Component {
     constructor() {
@@ -25,7 +27,7 @@ class Workspace extends React.Component {
             <div>
                 {this.props.graph.nodes && 
                     <div>
-                        <div className="case-container">
+                        <div className="case-label-container">
                             {
                                 [
                                     {
@@ -44,8 +46,9 @@ class Workspace extends React.Component {
                                         description: 'The cheapest delivery route between two towns.'
                                     },
                                 ].map(caseItem => (
-                                    <div className="case-label" key={caseItem.id}>
+                                    <div className={cl()} key={caseItem.id}>
                                         <input
+                                            className={cl('input')}
                                             type="radio"
                                             name="currentCase"
                                             id={caseItem.id}
@@ -53,9 +56,9 @@ class Workspace extends React.Component {
                                             checked={this.props.currentCase === caseItem.id}
                                             onChange={this.props.onCaseChoose}
                                         />
-                                        <label className="case-label-info" htmlFor={caseItem.id}>
-                                            <div className="case-label-info-title">{caseItem.title}</div>
-                                            <div className="case-label-info-description">{caseItem.description}</div>
+                                        <label className={cl('info-container')} htmlFor={caseItem.id}>
+                                            <div className={cl('title')}>{caseItem.title}</div>
+                                            <div className={cl('description')}>{caseItem.description}</div>
                                         </label>
                                     </div>))
                             }

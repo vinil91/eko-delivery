@@ -2,7 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Route from './Route';
-import Form from './Form';
+import Form from '../Form';
+
+import { block } from 'bem-cn';
+
+const rl = block('routes-list');
 
 function RoutesList(props) {
     return (
@@ -13,16 +17,16 @@ function RoutesList(props) {
                 placeholder="e.g. 'AB1,BF4,FE7'"
             />
             { props.graph.nodes &&
-                <div className="routes-list">
-                    <div className="routes-list-description-tag">
+                <div className={rl()}>
+                    <div className={rl('description-tag')}>
                         <div>FROM:</div>
                         <div>TO:</div>
                         <div>WEIGHT:</div>
                     </div>
-                    <div className="routes-list-title">
+                    <div className={rl('title')}>
                         Available Routes List
                     </div>
-                    <div className="routes-list-container">
+                    <div className={rl('container')}>
                         {props.graph.nodes.map(node => 
                             <Route
                                 key={node.id}
@@ -34,7 +38,7 @@ function RoutesList(props) {
                         }
                     </div>
                     <button 
-                        className="routes-list-reset-button" 
+                        className={rl('reset-button')}
                         onClick={props.onReset}
                     >
                         Reset Routes List

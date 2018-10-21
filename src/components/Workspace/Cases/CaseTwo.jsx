@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Form from '../Form';
+import Form from '../../Form';
 
 class CaseTwo extends React.Component {
     constructor(props) {
@@ -53,7 +53,7 @@ class CaseTwo extends React.Component {
     render() {
         return (
             <div>
-                <h2>CaseTwo. The number of possible delivery route that can be construct by the given
+                <h2 className="text-with-indent">CaseTwo. The number of possible delivery route that can be construct by the given
                     conditions.</h2>
                 <Form 
                     caseForm

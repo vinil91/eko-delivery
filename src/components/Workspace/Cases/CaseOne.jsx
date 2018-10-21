@@ -1,7 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Form from '../Form';
+import Form from '../../Form';
+
+import { block } from 'bem-cn';
+
+const r = block('result');
 
 class CaseOne extends React.Component {
     constructor(props) {
@@ -33,7 +37,7 @@ class CaseOne extends React.Component {
     render() {
         return (
             <div>
-                <h2>CaseOne. The delivery cost of route.</h2>
+                <h2 className="text-with-indent">CaseOne. The delivery cost of route.</h2>
                 <Form
                     caseForm
                     onEnter={this.handleEnter}
@@ -42,9 +46,9 @@ class CaseOne extends React.Component {
                 />
                 <div>
                     {this.state.calculatingRoute &&
-                    <div>
-                        <div className="result">{this.calculateCost(this.state.calculatingRoute)}</div>
-                        <button className="reset-case-button" onClick={this.handleReset}>RESET THE LAST COUNTED ROUTE</button>
+                    <div className={r()}>
+                        <div className={r('text')}>{this.calculateCost(this.state.calculatingRoute)}</div>
+                        <button className={r('reset-button')} onClick={this.handleReset}>RESET THE LAST COUNTED ROUTE</button>
                     </div>
                     }
                 </div>

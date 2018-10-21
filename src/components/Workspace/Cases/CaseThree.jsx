@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Form from '../Form';
+import Form from '../../Form';
 
 class CaseThree extends React.Component {
     constructor(props) {
@@ -33,7 +33,7 @@ class CaseThree extends React.Component {
     render() {
         return (
             <div>
-                <h2>CaseThree. The cheapest delivery route between two towns.</h2>
+                <h2 className="text-with-indent">CaseThree. The cheapest delivery route between two towns.</h2>
                 <Form
                     caseForm
                     caseAB

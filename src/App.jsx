@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Header from './components/Header';
-import RoutesList from './components/RoutesList';
-import Workspace from './components/Workspace';
+import Header from './components/Header/Header';
+import RoutesList from './components/RoutesList/RoutesList';
+import Workspace from './components/Workspace/Workspace';
 
 
 import { parser } from './helpers/parser'
@@ -45,7 +45,7 @@ class App extends React.Component {
     
     render() {
         return (
-            <main>
+            <div className="main">
                 <Header
                     graph={this.graph}
                     title={this.props.title}
@@ -62,7 +62,7 @@ class App extends React.Component {
                     onCaseChoose = {this.handleCaseChoose}
                     currentCase = {this.state.currentCase}
                 />
-            </main>
+            </div>
         );
     }
 }

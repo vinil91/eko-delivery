@@ -1,5 +1,9 @@
 import React from 'react';
 
+import { block } from 'bem-cn';
+
+const f = block('form');
+
 class Form extends React.Component {
     constructor(props) {
         super(props);
@@ -32,16 +36,17 @@ class Form extends React.Component {
     render() {
         return(
             <div>
-                <h4>{this.props.description}</h4>
-                <form className="enter-routes-form" onSubmit={this.handleSubmit}>
+                <h4 className="text-with-indent">{this.props.description}</h4>
+                <form className={f()} onSubmit={this.handleSubmit}>
                     <input
+                        className={f('input')}
                         type="text"
                         maxLength={this.props.caseAB ? 2 : undefined}
                         placeholder={`Type it here, ${this.props.placeholder}`}
                         value={this.state.value}
                         onChange={this.handleChange}
                     />
-                    <button type="submit">ENTER</button>
+                    <button className={f('button')} type="submit">ENTER</button>
                 </form>
             </div>
             
