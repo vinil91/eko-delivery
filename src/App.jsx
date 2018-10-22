@@ -11,9 +11,12 @@ import Graph from './models/Graph';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.graph = {};
+    const graph = new Graph([]);
     this.state = {
+      enteredLine: '',
       currentCase: '',
+      graph,
+      isWronglyParsed: false,
     };
 
     this.handleRoutesEnter = this.handleRoutesEnter.bind(this);
@@ -30,35 +33,49 @@ class App extends React.Component {
 
   handleRoutesEnter(line) {
     const nodes = parser(line);
-    this.graph = new Graph(nodes);
+    const correctParsedNodes = nodes.filter(node => node.start !== '*' && node.end !== '*' && node.weight !== '*');
+    const graph = new Graph(correctParsedNodes);
+    const isWronglyParsed = !(nodes.length === correctParsedNodes.length);
     this.setState({
+      enteredLine: line,
       currentCase: '',
+      graph,
+      isWronglyParsed,
     });
   }
 
   handleRoutesReset() {
-    this.graph = {};
-    this.forceUpdate();
+    const graph = new Graph([]);
+    this.setState({
+      enteredLine: '',
+      currentCase: '',
+      isWronglyParsed: false,
+      graph,
+    });
   }
 
   render() {
     const { title } = this.props;
-    const { currentCase } = this.state;
+    const {
+      currentCase, graph, enteredLine, isWronglyParsed,
+    } = this.state;
     return (
       <div className="main">
         <Header
-          graph={this.graph}
+          graph={graph}
           title={title}
         />
 
         <RoutesList
-          graph={this.graph}
+          graph={graph}
+          enteredLine={enteredLine}
+          isWronglyParsed={isWronglyParsed}
           onEnter={this.handleRoutesEnter}
           onReset={this.handleRoutesReset}
         />
 
         <Workspace
-          graph={this.graph}
+          graph={graph}
           onCaseChoose={this.handleCaseChoose}
           currentCase={currentCase}
         />
@@ -68,12 +85,7 @@ class App extends React.Component {
 }
 
 App.propTypes = {
-  title: PropTypes.string,
-  initialData: PropTypes.arrayOf(PropTypes.object).isRequired,
-};
-
-App.defaultProps = {
-  title: 'Title is required',
+  title: PropTypes.string.isRequired,
 };
 
 export default App;

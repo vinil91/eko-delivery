@@ -6,9 +6,9 @@ import { block } from 'bem-cn';
 const s = block('stats');
 
 function Stats(props) {
-  const { graph: { nodes, vertexes } } = props;
+  const { graph: { edges, vertexes } } = props;
 
-  const routes = nodes ? nodes.length : 0;
+  const routes = edges ? edges.length : 0;
   const cities = vertexes ? vertexes.length : 0;
 
   return (
@@ -28,11 +28,17 @@ function Stats(props) {
 }
 
 Stats.propTypes = {
-  graph: PropTypes.object,
+  graph: PropTypes.shape({
+    edges: PropTypes.array,
+    vertexes: PropTypes.array,
+  }),
 };
 
 Stats.defaultProps = {
-  graph: {},
+  graph: {
+    edges: [],
+    vertexes: [],
+  },
 };
 
 export default Stats;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { block } from 'bem-cn';
 
@@ -41,7 +42,10 @@ class Form extends React.Component {
     return (
       <div>
         <h4 className="text-with-indent">{description}</h4>
-        <form className={f()} onSubmit={this.handleSubmit}>
+        <form
+          className={f()}
+          onSubmit={this.handleSubmit}
+        >
           <input
             className={f('input')}
             type="text"
@@ -50,12 +54,30 @@ class Form extends React.Component {
             value={value}
             onChange={this.handleChange}
           />
-          <button className={f('button')} type="submit">ENTER</button>
+          <button
+            className={f('button')}
+            type="submit"
+          >
+            ENTER
+          </button>
         </form>
       </div>
-
     );
   }
 }
+
+Form.propTypes = {
+  onEnter: PropTypes.func.isRequired,
+  description: PropTypes.string.isRequired,
+  caseForm: PropTypes.bool,
+  caseAB: PropTypes.bool,
+  placeholder: PropTypes.string,
+};
+
+Form.defaultProps = {
+  caseForm: false,
+  caseAB: false,
+  placeholder: '',
+};
 
 export default Form;

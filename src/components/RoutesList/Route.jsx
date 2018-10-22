@@ -16,4 +16,10 @@ function Route(props) {
   );
 }
 
+Route.propTypes = {
+  start: PropTypes.string.isRequired,
+  end: PropTypes.string.isRequired,
+  cost: PropTypes.number.isRequired,
+};
+
 export default Route;

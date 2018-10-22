@@ -6,23 +6,42 @@ import { block } from 'bem-cn';
 const cl = block('case-label');
 
 function CaseLabel(props) {
+  const { isChecked, onChoose, caseItem: { id, name, title } } = props;
   return (
-    <div className={cl()} key={props.caseItem.id}>
-      <label className={cl('info-container', { checked: props.isChecked })} htmlFor={props.caseItem.id}>
+    <div className={cl()} key={id}>
+      <label className={cl('info-container', { checked: isChecked })} htmlFor={id}>
         <input
           className={cl('input')}
           type="radio"
           name="currentCase"
-          id={props.caseItem.id}
-          value={props.caseItem.id}
-          checked={props.isChecked}
-          onChange={props.onChoose}
+          id={id}
+          value={id}
+          checked={isChecked}
+          onChange={onChoose}
         />
-        <div className={cl('title')}>{props.caseItem.title}</div>
-        <div className={cl('description')}>{props.caseItem.description}</div>
+        <div className={cl('title')}>{name}</div>
+        <div className={cl('description')}>{title}</div>
       </label>
     </div>
   );
 }
+
+CaseLabel.propTypes = {
+  caseItem: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string,
+    description: PropTypes.string,
+  }),
+  isChecked: PropTypes.bool,
+  onChoose: PropTypes.func.isRequired,
+};
+
+CaseLabel.defaultProps = {
+  caseItem: {
+    title: '',
+    description: '',
+  },
+  isChecked: false,
+};
 
 export default CaseLabel;

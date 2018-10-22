@@ -1,12 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { block } from 'bem-cn';
 import { CaseOne, CaseTwo, CaseThree } from './Cases';
 import CaseLabel from './CaseLabel';
 
-
-const cl = block('case-label');
+import caseData from './case-data';
 
 class Workspace extends React.Component {
   constructor() {
@@ -17,51 +15,35 @@ class Workspace extends React.Component {
   renderCurrentCase(currentCase) {
     const { graph } = this.props;
     switch (currentCase) {
-      case 'case1': return <CaseOne graph={graph} />;
-      case 'case2': return <CaseTwo graph={graph} />;
-      case 'case3': return <CaseThree graph={graph} />;
+      case 'case1': return <CaseOne graph={graph} caseInfo={caseData[0]} />;
+      case 'case2': return <CaseTwo graph={graph} caseInfo={caseData[1]} />;
+      case 'case3': return <CaseThree graph={graph} caseInfo={caseData[2]} />;
       default: return <div />;
     }
   }
 
   render() {
     const { currentCase, onCaseChoose, graph } = this.props;
+    const atLeastOneEdge = graph.edges.length > 0;
     return (
       <div>
-        {graph.nodes
-                    && (
-                    <div>
-                      <div className="case-label-container">
-                        {
-                                [
-                                  {
-                                    id: 'case1',
-                                    title: 'CaseOne',
-                                    description: 'The delivery cost of route.',
-                                  },
-                                  {
-                                    id: 'case2',
-                                    title: 'CaseTwo',
-                                    description: 'The number of possible delivery route.',
-                                  },
-                                  {
-                                    id: 'case3',
-                                    title: 'CaseThree',
-                                    description: 'The cheapest delivery route between two towns.',
-                                  },
-                                ].map(caseItem => (
-                                  <CaseLabel
-                                    caseItem = {caseItem}
-                                    isChecked = {currentCase === caseItem.id}
-                                    onChoose={onCaseChoose}
-                                  />
-                                  ))
-                            }
-                      </div>
-                      {this.renderCurrentCase(currentCase)}
-                    </div>
-                    )
-                }
+        {atLeastOneEdge > 0 && (
+          <div>
+            <div className="case-label-container">
+              {
+                caseData.map(caseItem => (
+                  <CaseLabel
+                    key={caseItem.id}
+                    caseItem={caseItem}
+                    isChecked={currentCase === caseItem.id}
+                    onChoose={onCaseChoose}
+                  />
+                ))
+              }
+            </div>
+            {this.renderCurrentCase(currentCase)}
+          </div>
+        )}
       </div>
     );
   }
@@ -70,7 +52,10 @@ class Workspace extends React.Component {
 Workspace.propTypes = {
   currentCase: PropTypes.string.isRequired,
   onCaseChoose: PropTypes.func.isRequired,
-  graph: PropTypes.shape({ foo: { bar: {} } }).isRequired,
+  graph: PropTypes.shape({
+    edges: PropTypes.array.isRequired,
+    vertexes: PropTypes.array.isRequired,
+  }).isRequired,
 };
 
 export default Workspace;

@@ -35,6 +35,7 @@ class CaseOne extends React.Component {
   }
 
   render() {
+    const { caseInfo } = this.props;
     const { calculatingRoute } = this.state;
     return (
       <div>
@@ -42,23 +43,40 @@ class CaseOne extends React.Component {
         <Form
           caseForm
           onEnter={this.handleEnter}
-          description="Enter the route to calcualte the cost of delivery. Only latin letters allowed (e.g. 'ABC', 'ADEF')"
-          placeholder="e.g. 'ABC', 'ADEF'"
+          description={caseInfo.description}
+          placeholder={caseInfo.placeholder}
         />
         <div>
-          {calculatingRoute
-                    && (
-                    <div className={r()}>
-                      <div className={r('text')}>{this.calculateCost(calculatingRoute)}</div>
-                      <button className={r('reset-button')} onClick={this.handleReset} type="button">RESET THE LAST COUNTED ROUTE</button>
-                    </div>
-                    )
-                    }
+          {calculatingRoute && (
+            <div className={r()}>
+              <div className={r('text')}>{this.calculateCost(calculatingRoute)}</div>
+              <button
+                className={r('reset-button')}
+                onClick={this.handleReset}
+                type="button"
+              >
+                RESET THE LAST COUNTED ROUTE
+              </button>
+            </div>
+          )}
         </div>
       </div>
     );
   }
 }
 
+CaseOne.propTypes = {
+  graph: PropTypes.shape({
+    edges: PropTypes.array.isRequired,
+    vertexes: PropTypes.array.isRequired,
+  }).isRequired,
+  caseInfo: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    placeholder: PropTypes.string.isRequired,
+  }).isRequired,
+};
 
 export default CaseOne;

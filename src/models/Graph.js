@@ -1,104 +1,100 @@
-import find from 'lodash/find';
-import pull from 'lodash/pull';
-import min from 'lodash/min';
-
-class Graph {
-  constructor(nodes) {
-    this.nodes = nodes;
+import find from 'lodash/find'
+import pull from 'lodash/pull'
+import min from 'lodash/min'
+ class Graph {
+  constructor(edges) {
+    this.edges = edges;
     this.vertexes = [];
-    nodes.map((node) => {
-      if (this.vertexes.indexOf(node.start) == -1) { this.vertexes.push(node.start); }
-      if (this.vertexes.indexOf(node.end) == -1) this.vertexes.push(node.end);
-    });
+    edges.map(edge => {
+        if (this.vertexes.indexOf(edge.start) == -1)
+          this.vertexes.push(edge.start)
+        if (this.vertexes.indexOf(edge.end) == -1) this.vertexes.push(edge.end)
+      });
   }
 
-  dijkstra(source, goal) {
-    const dist = {};
-    const prev = {};
-    let queue = [];
-
-    this.vertexes.map((vertex) => {
-      dist[vertex] = Infinity;
-      prev[vertex] = null;
-      queue.push(vertex);
-    });
-
-    dist[source] = 0;
-
-    while (queue.length > 0) {
-      let tempVal = Infinity;
-      let vertex = null;
+   dijkstra(source, goal) {
+    const dist = {}
+    const prev = {}
+    let queue = []
+     this.vertexes.map(vertex => {
+      dist[vertex] = Infinity
+      prev[vertex] = null
+      queue.push(vertex)
+    })
+     dist[source] = 0
+     while (queue.length > 0) {
+      let tempVal = Infinity
+      let vertex = null
       for (let index = 0; index < queue.length; index++) {
         if (dist[queue[index]] < tempVal) {
-          vertex = queue[index];
-          tempVal = dist[queue[index]];
+          vertex = queue[index]
+          tempVal = dist[queue[index]]
         }
       }
       if (vertex === goal) {
-        break;
+        break
       }
-      queue = pull(queue, vertex);
-      this.nodes.filter(node => node.start === vertex).map((node) => {
-        const alt = dist[vertex] + node.weight;
-        if (alt < dist[node.end]) {
-          dist[node.end] = alt;
-          prev[node.end] = vertex;
+      queue = pull(queue, vertex)
+      this.edges.filter(edge => edge.start === vertex).map(edge => {
+        const alt = dist[vertex] + edge.weight
+        if (alt < dist[edge.end]) {
+          dist[edge.end] = alt
+          prev[edge.end] = vertex
         }
-      });
+      })
     }
-    return dist[goal];
+    return dist[goal]
   }
-
-  findBestPath(route) {
+   findBestPath(route) {
     const beginning = route.charAt(0);
     const end = route.charAt(1);
-    return min(
-      this.nodes
-        .filter(node => node.start === beginning)
-        .map(node => node.weight + this.dijkstra(node.end, end)),
+    console.log('!!!');
+    const bestPath = min(
+      this.edges
+        .filter(edge => edge.start === beginning)
+        .map(edge => edge.weight + this.dijkstra(edge.end, end))
     );
+    return bestPath ? `The cost of cheapest delivery on the route ${route} is ${bestPath}` : 'NO SUCH ROUTE';
   }
-
-  weightOfPathFromString(str) {
+   weightOfPathFromString(str) {
     const weight = this.weightOfPath(str.split(''));
-    return (weight === -1) ? 'NO SUCH ROUTE' : `The cost of route ${str} is ${weight} dollars`;
+    return (weight === -1) ? 'NO SUCH ROUTE' : `The cost of route ${str} is ${weight}`
   }
-
-  weightOfPath(map) {
-    let distance = 0;
+   weightOfPath(map) {
+    let distance = 0
     for (let index = 0; index < map.length - 1; index++) {
-      const start = map[index];
-      const end = map[index + 1];
+      const start = map[index]
+      const end = map[index + 1]
       const way = find(
-        this.nodes,
-        node => node.start === start && node.end === end,
-      );
+        this.edges,
+        edge => edge.start === start && edge.end === end
+      )
       if (!way) {
-        distance = -1;
-        break;
+        distance = -1
+        break
       } else {
-        distance += way.weight;
+        distance += way.weight
       }
     }
-    return distance;
+    return distance
   }
-
-  countTrips(trip, location, goal, ceiling, comparator) {
-    const soFar = [...trip, location];
+   countTrips(trip, location, goal, ceiling, comparator) {
+    const soFar = [...trip, location]
     if (comparator(trip, ceiling) && location === goal) {
-      return 1;
-    } if (trip.length >= ceiling) {
-      return 0;
+      return 1
+    } else if (trip.length >= ceiling) {
+      return 0
+    } else {
+      return [...this.edges]
+        .filter(edge => edge.start === location)
+        .reduce(
+          (sum, edge) =>
+            sum + this.countTrips(soFar, edge.end, goal, ceiling, comparator),
+          0
+        )
     }
-    return [...this.nodes]
-      .filter(node => node.start === location)
-      .reduce(
-        (sum, node) => sum + this.countTrips(soFar, node.end, goal, ceiling, comparator),
-        0,
-      );
   }
-
-  countTripsWithLessThanNStops(route, stops) {
+   countTripsWithLessThanNStops(route, stops) {
     const source = route.charAt(0);
     const goal = route.charAt(1);
     return this.countTrips(
@@ -106,9 +102,9 @@ class Graph {
       source,
       goal,
       stops + 1,
-      (trip, ceiling) => trip.length < ceiling && trip.length > 1,
-    );
+      (trip, ceiling) => trip.length < ceiling && trip.length > 1
+    )
   }
-}
+} 
 
-export default Graph;
+export default Graph

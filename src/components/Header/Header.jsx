@@ -17,12 +17,11 @@ function Header(props) {
 }
 
 Header.propTypes = {
-  title: PropTypes.string,
-  graph: PropTypes.object,
-};
-
-Header.defaultProps = {
-  title: 'Title is required',
+  title: PropTypes.string.isRequired,
+  graph: PropTypes.shape({
+    edges: PropTypes.array.isRequired,
+    vertexes: PropTypes.array.isRequired,
+  }).isRequired,
 };
 
 export default Header;

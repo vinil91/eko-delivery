@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { block } from 'bem-cn';
 import Form from '../../Form';
 
-
 const r = block('result');
 
 class CaseThree extends React.Component {
@@ -36,6 +35,7 @@ class CaseThree extends React.Component {
   }
 
   render() {
+    const { caseInfo } = this.props;
     const { calculatingRoute } = this.state;
     return (
       <div>
@@ -44,22 +44,40 @@ class CaseThree extends React.Component {
           caseForm
           caseAB
           onEnter={this.handleEnter}
-          description="Enter the first and the end points of route. Only latin letters allowed (e.g. 'AB', 'EF')"
-          placeholder="e.g. 'AB', 'EF'"
+          description={caseInfo.description}
+          placeholder={caseInfo.placeholder}
         />
         <div>
-          {calculatingRoute
-                    && (
-                    <div className={r()}>
-                      <div className={r('text')}>{`The cost of cheapest delivery on the route ${calculatingRoute} is ${this.calculateCheapestCost(calculatingRoute)} dollars`}</div>
-                      <button className={r('reset-button')} onClick={this.handleReset} type="button">RESET THE LAST COUNTED ROUTE</button>
-                    </div>
-                    )
-                    }
+          {calculatingRoute && (
+            <div className={r()}>
+              <div className={r('text')}>{this.calculateCheapestCost(calculatingRoute)}</div>
+              <button
+                className={r('reset-button')}
+                onClick={this.handleReset}
+                type="button"
+              >
+                RESET THE LAST COUNTED ROUTE
+              </button>
+            </div>
+          )}
         </div>
       </div>
     );
   }
 }
+
+CaseThree.propTypes = {
+  graph: PropTypes.shape({
+    edges: PropTypes.array.isRequired,
+    vertexes: PropTypes.array.isRequired,
+  }).isRequired,
+  caseInfo: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    placeholder: PropTypes.string.isRequired,
+  }).isRequired,
+};
 
 export default CaseThree;
