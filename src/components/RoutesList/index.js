@@ -1,1 +1,1 @@
-export {default} from './RoutesList';
+export { default } from './RoutesList';

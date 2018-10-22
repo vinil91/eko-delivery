@@ -6,13 +6,14 @@ import { block } from 'bem-cn';
 const r = block('route');
 
 function Route(props) {
-    return (
-        <div className={r()}>
-            <div className={r('start')}>{props.start}</div>
-            <div className={r('end')}>{props.end}</div>
-            <div>{props.cost}</div>
-        </div>    
-    );
+  const { start, end, cost } = props;
+  return (
+    <div className={r()}>
+      <div className={r('start')}>{start}</div>
+      <div className={r('end')}>{end}</div>
+      <div>{cost}</div>
+    </div>
+  );
 }
 
 export default Route;
