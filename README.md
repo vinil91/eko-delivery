@@ -26,8 +26,12 @@ or just go to: https://vinil91.github.io/eko-delivery/
 - [GitHub-Pages](https://pages.github.com/) is used for deployment
 ## The Problem and Solution
 The problem is to make solution for input available routes, and with their help get information about price of delivery, amount of possible delivery route and find the cheapest way of delivery.
+
 For solution I've made React App, because it's the most comfortable and easy-to-read solution to the problem.
+
 For counting I've used graph theory with the well-known dijkstra algorithm.
+
+Also, I've used RegExp which I've last used long time ago. It was very helpful for parsing, because it helps to delete inappropriate symbols and use methods with clean input.
 The combination of using graph and React makes the solution really nice. I hope'll like it too.
 
 The screenshot of the successfully dealt CaseOne(count the cost of delivery) is presented below:
