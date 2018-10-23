@@ -13,38 +13,38 @@ class Graph {
     });
   }
 
-  dijkstra(source, goal) {
-    const dist = {};
-    const prev = {};
-    let queue = [];
-    this.vertexes.map((vertex) => {
-      dist[vertex] = Infinity;
-      prev[vertex] = null;
-      queue.push(vertex);
+  dijkstra(fromPoint, toPoint) {
+    const distances = {};
+    const previous = {};
+    let discussingVertexes = [];
+    discussingVertexes = this.vertexes.map((vertex) => {
+      distances[vertex] = Infinity;
+      previous[vertex] = null;
+      return vertex;
     });
-    dist[source] = 0;
-    while (queue.length > 0) {
-      let tempVal = Infinity;
-      let vertex = null;
-      for (let index = 0; index < queue.length; index += 1) {
-        if (dist[queue[index]] < tempVal) {
-          vertex = queue[index];
-          tempVal = dist[queue[index]];
+    distances[fromPoint] = 0;
+    while (discussingVertexes.length > 0) {
+      let currentMinValue = Infinity;
+      let currentVertex = null;
+      for (let i = 0; i < discussingVertexes.length; i += 1) {
+        if (distances[discussingVertexes[i]] < currentMinValue) {
+          currentVertex = discussingVertexes[i];
+          currentMinValue = distances[currentVertex];
         }
       }
-      if (vertex === goal) {
+      if (currentVertex === toPoint) {
         break;
       }
-      queue = pull(queue, vertex);
-      this.edges.filter(node => node.start === vertex).map((node) => {
-        const alt = dist[vertex] + node.weight;
-        if (alt < dist[node.end]) {
-          dist[node.end] = alt;
-          prev[node.end] = vertex;
+      pull(discussingVertexes, currentVertex);
+      this.edges.filter(edge => edge.start === currentVertex).forEach((edge) => {
+        const alternativeDistance = distances[currentVertex] + edge.weight;
+        if (alternativeDistance < distances[edge.end]) {
+          distances[edge.end] = alternativeDistance;
+          previous[edge.end] = currentVertex;
         }
       });
     }
-    return dist[goal];
+    return distances[toPoint];
   }
 
   findBestPath(route) {
