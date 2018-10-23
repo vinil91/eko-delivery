@@ -31,3 +31,4 @@ For counting I've used graph theory with the well-known dijkstra algorithm.
 The combination of using graph and React makes the solution really nice. I hope'll like it too.
 
 The screenshot of the successfully dealt CaseOne(count the cost of delivery) is presented below:
+![Succefully Dealt CaseOne.](https://cdn1.savepice.ru/uploads/2018/10/23/83ed47a0f3d0e46490bad7941c60966f-full.png)
