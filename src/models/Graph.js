@@ -1,28 +1,29 @@
 import find from 'lodash/find'
 import pull from 'lodash/pull'
 import min from 'lodash/min'
- class Graph {
+
+class Graph {
   constructor(edges) {
     this.edges = edges;
     this.vertexes = [];
-    edges.map(edge => {
-        if (this.vertexes.indexOf(edge.start) == -1)
-          this.vertexes.push(edge.start)
-        if (this.vertexes.indexOf(edge.end) == -1) this.vertexes.push(edge.end)
-      });
+
+    edges.forEach(edge => {
+      if (this.vertexes.indexOf(edge.start) === -1) this.vertexes.push(edge.start);
+      if (this.vertexes.indexOf(edge.end) === -1) this.vertexes.push(edge.end);
+    });
   }
 
-   dijkstra(source, goal) {
-    const dist = {}
-    const prev = {}
-    let queue = []
-     this.vertexes.map(vertex => {
-      dist[vertex] = Infinity
-      prev[vertex] = null
-      queue.push(vertex)
+  dijkstra(source, goal) {
+    const dist = {};
+    const prev = {};
+    let queue = [];
+    this.vertexes.map(vertex => {
+      dist[vertex] = Infinity;
+      prev[vertex] = null;
+      queue.push(vertex);
     })
-     dist[source] = 0
-     while (queue.length > 0) {
+    dist[source] = 0;
+    while (queue.length > 0) {
       let tempVal = Infinity
       let vertex = null
       for (let index = 0; index < queue.length; index++) {
@@ -35,76 +36,75 @@ import min from 'lodash/min'
         break
       }
       queue = pull(queue, vertex)
-      this.edges.filter(edge => edge.start === vertex).map(edge => {
-        const alt = dist[vertex] + edge.weight
-        if (alt < dist[edge.end]) {
-          dist[edge.end] = alt
-          prev[edge.end] = vertex
+      this.edges.filter(node => node.start === vertex).map(node => {
+        const alt = dist[vertex] + node.weight
+        if (alt < dist[node.end]) {
+          dist[node.end] = alt
+          prev[node.end] = vertex
         }
       })
     }
     return dist[goal]
   }
-   findBestPath(route) {
-    const beginning = route.charAt(0);
+
+  findBestPath(route) {
+    const start = route.charAt(0);
     const end = route.charAt(1);
-    console.log('!!!');
-    const bestPath = min(
-      this.edges
-        .filter(edge => edge.start === beginning)
-        .map(edge => edge.weight + this.dijkstra(edge.end, end))
-    );
-    return bestPath ? `The cost of cheapest delivery on the route ${route} is ${bestPath}` : 'NO SUCH ROUTE';
+    if (this.vertexes.indexOf(start) === -1 || this.vertexes.indexOf(end) === -1) {
+      return `${route}: NO SUCH ROUTE`;;
+    }
+    const routesWithSuitableStart = this.edges.filter(edge => edge.start === start);
+    const pricesOfSuitableStarts = routesWithSuitableStart.map(edge => edge.weight + this.dijkstra(edge.end, end));
+    const bestPath = min(pricesOfSuitableStarts);
+    return bestPath ? `The cost of cheapest delivery on the route ${route} is ${bestPath}` : `${route}: NO SUCH ROUTE`;
   }
-   weightOfPathFromString(str) {
-    const weight = this.weightOfPath(str.split(''));
-    return (weight === -1) ? 'NO SUCH ROUTE' : `The cost of route ${str} is ${weight}`
-  }
-   weightOfPath(map) {
-    let distance = 0
-    for (let index = 0; index < map.length - 1; index++) {
-      const start = map[index]
-      const end = map[index + 1]
-      const way = find(
-        this.edges,
-        edge => edge.start === start && edge.end === end
-      )
-      if (!way) {
-        distance = -1
-        break
+
+
+  countPathWeight(path) {
+    const stopsArray = path.split('');
+    let weight = 0;
+    for (let i = 0; i < stopsArray.length - 1; i++) {
+      const pointA = stopsArray[i];
+      const pointB = stopsArray[i + 1];
+      const suitableZone = find(this.edges, edge => edge.start === pointA && edge.end === pointB);
+      if (suitableZone) {
+        weight += suitableZone.weight
       } else {
-        distance += way.weight
+        weight = -1;
+        break;
       }
     }
-    return distance
+    return (weight === -1) ? `${path}: NO SUCH ROUTE` : `The cost of route ${path} is ${weight}`;
   }
-   countTrips(trip, location, goal, ceiling, comparator) {
-    const soFar = [...trip, location]
-    if (comparator(trip, ceiling) && location === goal) {
-      return 1
-    } else if (trip.length >= ceiling) {
-      return 0
+
+
+  countTrips(passedWay, currentPoint, finishPoint, ceiling) {
+    if (currentPoint === finishPoint && passedWay.length <= ceiling && passedWay.length !== 0) {
+      return 1;
+    } else if (passedWay.length > ceiling) {
+      return 0;
     } else {
-      return [...this.edges]
-        .filter(edge => edge.start === location)
+      const passedWayWithCurrentPoint = [...passedWay, currentPoint];
+      return this.edges
+        .filter(edge => edge.start === currentPoint)
         .reduce(
           (sum, edge) =>
-            sum + this.countTrips(soFar, edge.end, goal, ceiling, comparator),
+            sum + this.countTrips(passedWayWithCurrentPoint, edge.end, finishPoint, ceiling),
           0
-        )
+        );
     }
   }
-   countTripsWithLessThanNStops(route, stops) {
-    const source = route.charAt(0);
-    const goal = route.charAt(1);
-    return this.countTrips(
-      [],
-      source,
-      goal,
-      stops + 1,
-      (trip, ceiling) => trip.length < ceiling && trip.length > 1
-    )
-  }
-} 
 
-export default Graph
+  countTripsWithLessThanNStops(route, maxStops) {
+    const start = route.charAt(0);
+    const end = route.charAt(1);
+    if (this.vertexes.indexOf(start) === -1 || this.vertexes.indexOf(end) === -1) {
+      return `${route}: NO SUCH ROUTE`;;
+    } else {
+      return `The number of possible delivery of route ${route} with a maximum
+        of ${maxStops} stops is ${this.countTrips([], start, end, maxStops)}`;
+    }
+  }
+}
+
+export default Graph;

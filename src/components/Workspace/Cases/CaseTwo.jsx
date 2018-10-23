@@ -51,11 +51,7 @@ class CaseTwo extends React.Component {
           {calculatingRoute && calculatingStops && (
             <div className={r()}>
               <div className={r('text')}>
-                {
-                  `The number of possible delivery of route 
-                  ${calculatingRoute} ${calculatingStops ? `with a maximum of ${calculatingStops} stops` : ''} is 
-                  ${this.calculateDeliveryAmount(calculatingRoute, calculatingStops)}`
-                }
+                {this.calculateDeliveryAmount(calculatingRoute, calculatingStops)}
               </div>
               <button
                 className={r('reset-button')}

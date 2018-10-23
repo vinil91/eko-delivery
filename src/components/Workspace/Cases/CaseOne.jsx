@@ -25,7 +25,7 @@ class CaseOne extends React.Component {
 
   calculateCost(route) {
     const { graph } = this.props;
-    return graph.weightOfPathFromString(route);
+    return graph.countPathWeight(route);
   }
 
   handleReset() {
