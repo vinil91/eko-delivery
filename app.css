@@ -134,40 +134,31 @@ body {
     position: relative;    
 }
 
-.routes-list__title{
+.routes-list__header{
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: no-wrap;
+    background-color: #00d8ff;
     height: 40px;
+}
+
+.routes-list__title{
+    height: 100%;
     font-size: 25px;
     background-color: #00d8ff;
     color: #222;
     text-transform: uppercase;
     text-align: center;
     font-weight: 700;
-}
-
-.routes-list__description-tag {
-    position: absolute;
-    width: 100px;
-    left: -100px;
-    top: 40px;
-    background-color: #00d8ff;
-    color: #222;
-    text-align: right;
-}
-
-.routes-list__container {
-    display: flex;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    background-color: #00d8ff;
+    padding-right: 50px;
+    padding-top: 5px;
 }
 
 .routes-list__reset-button {
-    position: absolute;
-    width: 100px;
-    right: -100px;
-    top: 40px;
+    height: 80%;
+    width: auto;
     background-color: red;
-    height: 60px;
+    height: auto;
     line-height: 20px;
     color: white;
     text-align: left;
@@ -187,6 +178,16 @@ body {
     cursor: pointer;
     text-decoration: none;
     vertical-align: middle;
+}
+
+
+
+.routes-list__container {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    background-color: #00d8ff;
+    padding-top: 15px;
 }
 
 .routes-list__reset-button:hover {
