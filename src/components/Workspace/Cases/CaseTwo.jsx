@@ -70,8 +70,9 @@ class CaseTwo extends React.Component {
 
 CaseTwo.propTypes = {
   graph: PropTypes.shape({
-    edges: PropTypes.array.isRequired,
-    vertexes: PropTypes.array.isRequired,
+    edges: PropTypes.arrayOf(PropTypes.any).isRequired,
+    vertexes: PropTypes.arrayOf(PropTypes.any).isRequired,
+    countTripsWithLessThanNStops: PropTypes.func,
   }).isRequired,
   caseInfo: PropTypes.shape({
     id: PropTypes.string.isRequired,

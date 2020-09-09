@@ -29,8 +29,8 @@ function Stats(props) {
 
 Stats.propTypes = {
   graph: PropTypes.shape({
-    edges: PropTypes.array,
-    vertexes: PropTypes.array,
+    edges: PropTypes.arrayOf(PropTypes.any),
+    vertexes: PropTypes.arrayOf(PropTypes.any),
   }),
 };
 
