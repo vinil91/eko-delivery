@@ -47,7 +47,7 @@ function RoutesList(props) {
               Available Routes List
             </div>
             <div className={rl('container')}>
-              {edges.map(edge => (
+              {edges.map((edge) => (
                 <Route
                   key={edge.id}
                   id={edge.id}
@@ -55,8 +55,7 @@ function RoutesList(props) {
                   end={edge.end}
                   cost={edge.weight}
                 />
-              ))
-              }
+              ))}
             </div>
             <button
               className={rl('reset-button')}
@@ -74,8 +73,8 @@ function RoutesList(props) {
 
 RoutesList.propTypes = {
   graph: PropTypes.shape({
-    edges: PropTypes.array,
-    vertexes: PropTypes.array,
+    edges: PropTypes.arrayOf(PropTypes.any),
+    vertexes: PropTypes.arrayOf(PropTypes.any),
   }),
   isWronglyParsed: PropTypes.bool.isRequired,
   onEnter: PropTypes.func.isRequired,
@@ -90,6 +89,5 @@ RoutesList.defaultProps = {
   },
   enteredLine: '',
 };
-
 
 export default RoutesList;

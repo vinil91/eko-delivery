@@ -30,7 +30,7 @@ CaseLabel.propTypes = {
   caseItem: PropTypes.shape({
     id: PropTypes.string.isRequired,
     title: PropTypes.string,
-    description: PropTypes.string,
+    name: PropTypes.string,
   }),
   isChecked: PropTypes.bool,
   onChoose: PropTypes.func.isRequired,

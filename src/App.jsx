@@ -33,7 +33,7 @@ class App extends React.Component {
 
   handleRoutesEnter(line) {
     const nodes = parser(line);
-    const correctParsedNodes = nodes.filter(node => node.start !== '*' && node.end !== '*' && node.weight !== '*');
+    const correctParsedNodes = nodes.filter((node) => node.start !== '*' && node.end !== '*' && node.weight !== '*');
     const graph = new Graph(correctParsedNodes);
     const isWronglyParsed = !(nodes.length === correctParsedNodes.length);
     this.setState({

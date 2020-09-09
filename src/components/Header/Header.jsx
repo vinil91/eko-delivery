@@ -19,8 +19,8 @@ function Header(props) {
 Header.propTypes = {
   title: PropTypes.string.isRequired,
   graph: PropTypes.shape({
-    edges: PropTypes.array.isRequired,
-    vertexes: PropTypes.array.isRequired,
+    edges: PropTypes.arrayOf(PropTypes.any).isRequired,
+    vertexes: PropTypes.arrayOf(PropTypes.any).isRequired,
   }).isRequired,
 };
 

@@ -31,7 +31,7 @@ class Workspace extends React.Component {
           <div>
             <div className="case-label-container">
               {
-                caseData.map(caseItem => (
+                caseData.map((caseItem) => (
                   <CaseLabel
                     key={caseItem.id}
                     caseItem={caseItem}
@@ -53,8 +53,8 @@ Workspace.propTypes = {
   currentCase: PropTypes.string.isRequired,
   onCaseChoose: PropTypes.func.isRequired,
   graph: PropTypes.shape({
-    edges: PropTypes.array.isRequired,
-    vertexes: PropTypes.array.isRequired,
+    edges: PropTypes.arrayOf(PropTypes.any).isRequired,
+    vertexes: PropTypes.arrayOf(PropTypes.any).isRequired,
   }).isRequired,
 };
 
