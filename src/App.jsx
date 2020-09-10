@@ -1,15 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Header, RoutesList } from './components';
-import Workspace from './components/Workspace/Workspace';
+import { Header, Content, Footer } from './components';
 
 function App({ title }) {
   return (
     <div className="main">
       <Header title={title} />
-      <RoutesList />
-      <Workspace />
+      <Content />
+      <Footer />
     </div>
   );
 }

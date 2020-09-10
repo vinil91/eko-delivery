@@ -24,7 +24,7 @@ function Workspace({ currentCase, graph }) {
     <div>
       {atLeastOneEdge > 0 && (
         <div>
-          <div className="case-label-container">
+          <ul className="case-label-container">
             {
               caseData.map((caseItem) => (
                 <CaseLabel
@@ -34,7 +34,7 @@ function Workspace({ currentCase, graph }) {
                 />
               ))
             }
-          </div>
+          </ul>
           {renderCurrentCase(currentCase)}
         </div>
       )}

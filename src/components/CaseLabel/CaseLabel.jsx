@@ -16,7 +16,7 @@ function CaseLabel({ isChecked, onChoose, caseItem: { id, name, title } }) {
   }
 
   return (
-    <div className={cl()} key={id}>
+    <li className={cl()} key={id}>
       <label className={cl('info-container', { checked: isChecked })} htmlFor={id}>
         <input
           className={cl('input')}
@@ -30,7 +30,7 @@ function CaseLabel({ isChecked, onChoose, caseItem: { id, name, title } }) {
         <div className={cl('title')}>{name}</div>
         <div className={cl('description')}>{title}</div>
       </label>
-    </div>
+    </li>
   );
 }
 

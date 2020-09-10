@@ -50,15 +50,18 @@ function RoutesList({ enteredLine, graph: { edges }, isWronglyParsed, onSubmit, 
       {atLeastOneEdge && (
         <div>
           <div className={rl()}>
-            <div className={rl('description-tag')}>
-              <div>FROM:</div>
-              <div>TO:</div>
-              <div>WEIGHT:</div>
+            <div className={rl('title-line')}>
+              <div className={rl('title')}>
+                Available Routes List
+              </div>
+              <button
+                onClick={onReset}
+                type="button"
+              >
+                Reset Routes List
+              </button>
             </div>
-            <div className={rl('title')}>
-              Available Routes List
-            </div>
-            <div className={rl('container')}>
+            <ul className={rl('container')}>
               {
                 edges.map((edge) => (
                   <Route
@@ -70,14 +73,8 @@ function RoutesList({ enteredLine, graph: { edges }, isWronglyParsed, onSubmit, 
                   />
                 ))
               }
-            </div>
-            <button
-              className={rl('reset-button')}
-              onClick={onReset}
-              type="button"
-            >
-              Reset Routes List
-            </button>
+            </ul>
+
           </div>
         </div>
       )}
@@ -91,7 +88,7 @@ RoutesList.propTypes = {
     vertexes: PropTypes.arrayOf(PropTypes.any),
   }),
   isWronglyParsed: PropTypes.bool.isRequired,
-  onEnter: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
   onReset: PropTypes.func.isRequired,
   enteredLine: PropTypes.string,
 };

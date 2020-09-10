@@ -1,12 +1,14 @@
-.case-label {
-  height: 100px;
-  width: 230px;
-}
-
 .case-label-container {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  list-style-type: none;
+  padding-inline-start: 0;
+}
+
+.case-label {
+  height: 100px;
+  width: 33%;
 }
 
 .case-label__input {
@@ -38,4 +40,15 @@
 
 .case-label__title {
   font-size: 16px; 
+}
+
+@media all and (max-width: 480px) {
+  .case-label-container {
+    flex-direction: column;
+  }
+  .case-label {
+    height: 70px;
+    width: auto;
+  }
+  
 }
