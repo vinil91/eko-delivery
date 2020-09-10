@@ -1,69 +1,52 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-
 import { block } from 'bem-cn';
+
 import Form from '../../Form';
 
 const r = block('result');
 
-class CaseThree extends React.Component {
-  constructor(props) {
-    super(props);
+function CaseThree({ graph, caseInfo }) {
+  const [calculatingRoute, setCalculatingRoute] = useState('');
 
-    this.state = {
-      calculatingRoute: '',
-    };
-
-    this.handleEnter = this.handleEnter.bind(this);
-    this.handleReset = this.handleReset.bind(this);
+  const handleEnter = (route) => {
+    setCalculatingRoute(route.toUpperCase());
   }
 
-  handleEnter(route) {
-    const calculatingRoute = route.toUpperCase();
-    this.setState({ calculatingRoute });
-  }
-
-  calculateCheapestCost(route) {
-    const { graph } = this.props;
+  const calculateCheapestCost = (route) => {
     return graph.findBestPath(route);
   }
 
-  handleReset() {
-    this.setState({
-      calculatingRoute: '',
-    });
+  const handleReset = () => {
+    setCalculatingRoute('');
   }
 
-  render() {
-    const { caseInfo } = this.props;
-    const { calculatingRoute } = this.state;
-    return (
+  return (
+    <div>
+      <h2 className="text-with-indent">CaseThree. The cheapest delivery route between two towns.</h2>
+      <Form
+        caseForm
+        caseAB
+        onEnter={handleEnter}
+        description={caseInfo.description}
+        placeholder={caseInfo.placeholder}
+      />
       <div>
-        <h2 className="text-with-indent">CaseThree. The cheapest delivery route between two towns.</h2>
-        <Form
-          caseForm
-          caseAB
-          onEnter={this.handleEnter}
-          description={caseInfo.description}
-          placeholder={caseInfo.placeholder}
-        />
-        <div>
-          {calculatingRoute && (
-            <div className={r()}>
-              <div className={r('text')}>{this.calculateCheapestCost(calculatingRoute)}</div>
-              <button
-                className={r('reset-button')}
-                onClick={this.handleReset}
-                type="button"
-              >
-                RESET THE LAST COUNTED ROUTE
-              </button>
-            </div>
-          )}
-        </div>
+        {calculatingRoute && (
+          <div className={r()}>
+            <div className={r('text')}>{calculateCheapestCost(calculatingRoute)}</div>
+            <button
+              className={r('reset-button')}
+              onClick={handleReset}
+              type="button"
+            >
+              RESET THE LAST COUNTED ROUTE
+            </button>
+          </div>
+        )}
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 CaseThree.propTypes = {
