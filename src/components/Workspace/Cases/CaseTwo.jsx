@@ -1,71 +1,55 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-
 import { block } from 'bem-cn';
+
 import FormWithStops from './FormWithStops';
 
 const r = block('result');
 
-class CaseTwo extends React.Component {
-  constructor(props) {
-    super(props);
+function CaseTwo({ graph, caseInfo }) {
+  const [calculatingRoute, setCalculatingRoute] = useState('');
+  const [calculatingStops, setCalculatingStops] = useState('');
 
-    this.state = {
-      calculatingRoute: '',
-      calculatingStops: '',
-    };
-
-    this.handleEnter = this.handleEnter.bind(this);
-    this.handleReset = this.handleReset.bind(this);
+  const handleEnter = (route, stops) => {
+    setCalculatingRoute(route.toUpperCase());
+    setCalculatingStops(stops);
   }
 
-  handleEnter(route, calculatingStops) {
-    const calculatingRoute = route.toUpperCase();
-    this.setState({ calculatingRoute, calculatingStops });
-  }
-
-  calculateDeliveryAmount(route, stops) {
-    const { graph } = this.props;
+  const calculateDeliveryAmount = (route, stops) => {
     return graph.countTripsWithLessThanNStops(route, Number(stops));
   }
 
-  handleReset() {
-    this.setState({
-      calculatingRoute: '',
-      calculatingStops: '',
-    });
+  const handleReset = () => {
+    setCalculatingRoute('');
+    setCalculatingStops('');
   }
 
-  render() {
-    const { caseInfo } = this.props;
-    const { calculatingRoute, calculatingStops } = this.state;
-    return (
+  return (
+    <div>
+      <h2 className="text-with-indent">CaseTwo. The number of possible delivery route that can be construct by the given conditions.</h2>
+      <FormWithStops
+        onEnter={handleEnter}
+        description={caseInfo.description}
+        placeholder={caseInfo.placeholder}
+      />
       <div>
-        <h2 className="text-with-indent">CaseTwo. The number of possible delivery route that can be construct by the given conditions.</h2>
-        <FormWithStops
-          onEnter={this.handleEnter}
-          description={caseInfo.description}
-          placeholder={caseInfo.placeholder}
-        />
-        <div>
-          {calculatingRoute && calculatingStops && (
-            <div className={r()}>
-              <div className={r('text')}>
-                {this.calculateDeliveryAmount(calculatingRoute, calculatingStops)}
-              </div>
-              <button
-                className={r('reset-button')}
-                onClick={this.handleReset}
-                type="button"
-              >
-                RESET THE LAST COUNTED ROUTE AND STOPS AMOUNT
-              </button>
+        {calculatingRoute && calculatingStops && (
+          <div className={r()}>
+            <div className={r('text')}>
+              {calculateDeliveryAmount(calculatingRoute, calculatingStops)}
             </div>
-          )}
-        </div>
+            <button
+              className={r('reset-button')}
+              onClick={handleReset}
+              type="button"
+            >
+              RESET THE LAST COUNTED ROUTE AND STOPS AMOUNT
+            </button>
+          </div>
+        )}
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 CaseTwo.propTypes = {
