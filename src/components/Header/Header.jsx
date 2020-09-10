@@ -2,7 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { block } from 'bem-cn';
 
-import Stats from './Stats';
+import { Stats } from '..';
+
+import './Header.css';
 
 const b = block('header');
 

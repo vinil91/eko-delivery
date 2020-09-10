@@ -3,12 +3,13 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { block } from 'bem-cn';
 
-import Route from './Route';
-import Form from '../Form';
+import { Route, Form} from '..';
 
 import { resetGraph, setGraph } from '../../redux/actions/actions';
 import parser from '../../helpers/parser';
 import Graph from '../../models/Graph';
+
+import './RoutesList.css'
 
 const wp = block('warning-panel');
 const rl = block('routes-list');

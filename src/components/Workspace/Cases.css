@@ -1,0 +1,19 @@
+.result__text {
+  font-size: 25px;
+  text-align: center;
+  background-color: #00d8ff;
+  color: #222;
+}
+
+.result__reset-button{
+  width: 100%;
+  background-color: red;
+  color: white;
+  height: 40px;
+  border: none;
+  cursor: pointer;
+}
+
+.result__reset-button:hover {
+  background-color: purple;
+}

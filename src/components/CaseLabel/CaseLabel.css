@@ -1,0 +1,41 @@
+.case-label {
+  height: 100px;
+  width: 230px;
+}
+
+.case-label-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.case-label__input {
+  display: none;
+}
+
+.case-label__info-container {
+  border: 1px solid black;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+  background-color: #00d8ff;
+}
+
+.case-label__info-container_checked {
+  background-color: purple;
+}
+
+.case-label__info-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.case-label__name {
+  font-size: 22px;
+}
+
+.case-label__title {
+  font-size: 16px; 
+}

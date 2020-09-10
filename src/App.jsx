@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Header from './components/Header/Header';
-import RoutesList from './components/RoutesList/RoutesList';
+import { Header, RoutesList } from './components';
 import Workspace from './components/Workspace/Workspace';
 
 function App({ title }) {

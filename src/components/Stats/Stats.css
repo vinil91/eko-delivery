@@ -1,0 +1,16 @@
+.stats {
+  margin: 10px;
+}
+
+.stats__th {
+  text-align: right;
+  font-weight: normal;
+  letter-spacing: 2px;
+  font-size: .7em;
+}
+
+.stats__td {
+  text-align: left;
+  font-size: 1.5rem;
+  font-family: monospace;
+}

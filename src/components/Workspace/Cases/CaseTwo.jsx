@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { block } from 'bem-cn';
 
-import FormWithStops from './FormWithStops';
+import { FormWithStops } from '../..';
 
 const r = block('result');
 

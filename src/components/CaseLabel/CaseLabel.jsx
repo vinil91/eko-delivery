@@ -5,6 +5,8 @@ import { block } from 'bem-cn';
 
 import { setCase } from '../../redux/actions/actions';
 
+import './CaseLabel.css';
+
 const cl = block('case-label');
 
 function CaseLabel({ isChecked, onChoose, caseItem: { id, name, title } }) {
