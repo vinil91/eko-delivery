@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-
 import { block } from 'bem-cn';
+
+import './Form.css';
 
 const f = block('form');
 

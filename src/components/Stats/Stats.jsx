@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { block } from 'bem-cn';
 
+import './Stats.css'
+
 const s = block('stats');
 
 function Stats({ graph: { edges, vertexes } }) {

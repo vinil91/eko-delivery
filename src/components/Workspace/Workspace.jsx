@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { CaseOne, CaseTwo, CaseThree } from './Cases';
-import CaseLabel from './CaseLabel';
+import { CaseLabel } from '..';
+
+import './Cases.css';
 
 import caseData from './case-data';
 

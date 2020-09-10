@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { block } from 'bem-cn';
 
+import './Route.css';
+
 const r = block('route');
 
 function Route({ start, end, cost }) {

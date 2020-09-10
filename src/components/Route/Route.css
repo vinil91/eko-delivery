@@ -1,0 +1,10 @@
+.route {
+  width: 100px;
+  border: 1px solid black;
+  text-align: center;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-bottom: 10px;
+  background-color: #222;
+  color: #00d8ff;
+}
