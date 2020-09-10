@@ -1,12 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import { connect } from 'react-redux';
 import { block } from 'bem-cn';
+
+import { setCase } from '../../redux/actions/actions';
 
 const cl = block('case-label');
 
-function CaseLabel(props) {
-  const { isChecked, onChoose, caseItem: { id, name, title } } = props;
+function CaseLabel({ isChecked, onChoose, caseItem: { id, name, title } }) {
+  const handleCaseChoose = (event) => {
+    const currentCase = event.target.value;
+    onChoose(currentCase);
+  }
+
   return (
     <div className={cl()} key={id}>
       <label className={cl('info-container', { checked: isChecked })} htmlFor={id}>
@@ -17,7 +23,7 @@ function CaseLabel(props) {
           id={id}
           value={id}
           checked={isChecked}
-          onChange={onChoose}
+          onChange={handleCaseChoose}
         />
         <div className={cl('title')}>{name}</div>
         <div className={cl('description')}>{title}</div>
@@ -44,4 +50,17 @@ CaseLabel.defaultProps = {
   isChecked: false,
 };
 
-export default CaseLabel;
+function mapStateToProps(state) {
+  return {
+    graph: state.graph,
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    onChoose: (currentCase) => dispatch(setCase(currentCase)),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CaseLabel);
+

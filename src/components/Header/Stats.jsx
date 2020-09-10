@@ -1,16 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import { connect } from 'react-redux';
 import { block } from 'bem-cn';
 
 const s = block('stats');
 
-function Stats(props) {
-  const { graph: { edges, vertexes } } = props;
-
-  const routes = edges ? edges.length : 0;
-  const cities = vertexes ? vertexes.length : 0;
-
+function Stats({ graph: { edges, vertexes } }) {
+  const routes = edges.length;
+  const cities = vertexes.length;
   return (
     <table className={s()}>
       <tbody>
@@ -41,4 +38,10 @@ Stats.defaultProps = {
   },
 };
 
-export default Stats;
+function mapStateToProps(state) {
+  return {
+    graph: state.graph
+  }
+}
+
+export default connect(mapStateToProps)(Stats);
