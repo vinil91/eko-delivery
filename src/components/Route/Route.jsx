@@ -8,11 +8,11 @@ const r = block('route');
 
 function Route({ start, end, cost }) {
   return (
-    <div className={r()}>
+    <li className={r()}>
       <div className={r('start')}>{start}</div>
       <div className={r('end')}>{end}</div>
       <div>{cost}</div>
-    </div>
+    </li>
   );
 }
 

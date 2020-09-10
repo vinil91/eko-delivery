@@ -11,18 +11,16 @@ function Stats({ graph: { edges, vertexes } }) {
   const routes = edges.length;
   const cities = vertexes.length;
   return (
-    <table className={s()}>
-      <tbody>
-        <tr>
-          <th className={s('th')}>ROUTES AVAILABLE:</th>
-          <td className={s('td')}>{routes}</td>
-        </tr>
-        <tr>
-          <th className={s('th')}>CITIES COVERED:</th>
-          <td className={s('td')}>{cities}</td>
-        </tr>
-      </tbody>
-    </table>
+    <div className={s()}>
+      <div className={s('row')}>
+        <div className={s('name')}>ROUTES AVAILABLE:</div>
+        <div className={s('value')}>{routes}</div>
+      </div>
+      <div className={s('row')}>
+        <div className={s('name')}>CITIES COVERED:</div>
+        <div className={s('value')}>{cities}</div>
+      </div>
+    </div>
   );
 }
 

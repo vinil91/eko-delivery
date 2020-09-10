@@ -2,24 +2,18 @@
   position: relative;    
 }
 
-.routes-list__title{
-  height: 40px;
-  font-size: 25px;
+.routes-list__title-line {
+  display: flex;
   background-color: #00d8ff;
+  justify-content: space-between;
+}
+
+.routes-list__title {
+  font-size: 25px;
   color: #222;
   text-transform: uppercase;
   text-align: center;
   font-weight: 700;
-}
-
-.routes-list__description-tag {
-  position: absolute;
-  width: 100px;
-  left: -100px;
-  top: 40px;
-  background-color: #00d8ff;
-  color: #222;
-  text-align: right;
 }
 
 .routes-list__container {
@@ -27,42 +21,9 @@
   justify-content: flex-start;
   flex-wrap: wrap;
   background-color: #00d8ff;
-}
-
-.routes-list__reset-button {
-  position: absolute;
-  width: 100px;
-  right: -100px;
-  top: 40px;
-  background-color: red;
-  height: 60px;
-  line-height: 20px;
-  color: white;
-  text-align: left;
-  border: none;
-  border-radius: 2px;
-  margin: 0;
-  padding: 0 16px;
-  display: inline-block;
-  font-family: "Roboto","Helvetica","Arial",sans-serif;
-  font-size: 14px;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0;
-  will-change: box-shadow;
-  transition: box-shadow .2s cubic-bezier(.4,0,1,1),background-color .2s cubic-bezier(.4,0,.2,1),color .2s cubic-bezier(.4,0,.2,1);
-  outline: none;
-  cursor: pointer;
-  text-decoration: none;
-  vertical-align: middle;
-}
-
-.routes-list__reset-button:hover {
-  background-color: purple;
-}
-
-.routes-list__reset-button:active {
-  background-color: black;
+  list-style-type: none;
+  padding-inline-start: 0;
+  padding: 0 10px;
 }
 
 .warning-panel__header {
