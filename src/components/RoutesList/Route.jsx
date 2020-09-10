@@ -1,12 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import { block } from 'bem-cn';
 
 const r = block('route');
 
-function Route(props) {
-  const { start, end, cost } = props;
+function Route({ start, end, cost }) {
   return (
     <div className={r()}>
       <div className={r('start')}>{start}</div>
