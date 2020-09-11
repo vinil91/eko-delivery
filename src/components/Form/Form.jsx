@@ -26,10 +26,9 @@ function Form({ description, caseAB, caseForm, placeholder, onEnter }) {
     }
     setValue(curValue);
   }
-
-  return (
+    return (
     <div>
-      <h4 className="text-with-indent">{description}</h4>
+      <h4 className={`text-with-indent ${f('description')}`}>{description}</h4>
       <form
         className={f()}
         onSubmit={handleSubmit}

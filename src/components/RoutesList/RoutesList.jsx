@@ -26,7 +26,7 @@ function RoutesList({ enteredLine, graph: { edges }, isWronglyParsed, onSubmit, 
   };
 
   return (
-    <div>
+    <div className={rl()}>
       <Form
         onEnter={onEnter}
         description="Enter all available routes(comma-separated, e.g. 'AB1,BF4,FE7')"
@@ -49,12 +49,13 @@ function RoutesList({ enteredLine, graph: { edges }, isWronglyParsed, onSubmit, 
       )}
       {atLeastOneEdge && (
         <div>
-          <div className={rl()}>
+          <div className={rl('show-part')}>
             <div className={rl('title-line')}>
               <div className={rl('title')}>
                 Available Routes List
               </div>
               <button
+                className={rl('button')}
                 onClick={onReset}
                 type="button"
               >

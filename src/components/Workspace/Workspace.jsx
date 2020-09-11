@@ -5,13 +5,12 @@ import { connect } from 'react-redux';
 import { CaseOne, CaseTwo, CaseThree } from './Cases';
 import { CaseLabel } from '..';
 
+import './Workspace.css';
 import './Cases.css';
 
 import caseData from './case-data';
 
 function Workspace({ currentCase, graph }) {
-  const atLeastOneEdge = graph.edges.length > 0;
-
   const renderCurrentCase = (curCase) => {
     switch (curCase) {
       case 'case1': return <CaseOne graph={graph} caseInfo={caseData[0]} />;
@@ -21,23 +20,19 @@ function Workspace({ currentCase, graph }) {
     }
   }
   return (
-    <div>
-      {atLeastOneEdge > 0 && (
-        <div>
-          <ul className="case-label-container">
-            {
-              caseData.map((caseItem) => (
-                <CaseLabel
-                  key={caseItem.id}
-                  caseItem={caseItem}
-                  isChecked={currentCase === caseItem.id}
-                />
-              ))
-            }
-          </ul>
-          {renderCurrentCase(currentCase)}
-        </div>
-      )}
+    <div className="workspace">
+      <ul className="case-label-container">
+        {
+          caseData.map((caseItem) => (
+            <CaseLabel
+              key={caseItem.id}
+              caseItem={caseItem}
+              isChecked={currentCase === caseItem.id}
+            />
+          ))
+        }
+      </ul>
+      {renderCurrentCase(currentCase)}
     </div>
   );
 }
