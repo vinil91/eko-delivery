@@ -1,8 +1,12 @@
 .form {
   display: flex;
-  background-color: #FAFAFA;
   border-top: 1px solid rgba(0,0,0,.1);
   padding: 10px;
+}
+
+.form__description {
+  margin: 0;
+  padding-top: 21px;
 }
 
 .form__input {
@@ -25,7 +29,7 @@
 .form__button {
   margin-left: 10px;
   background: 0 0;
-  border: none;
+  border: 1px solid #143D59;
   border-radius: 2px;
   color: #757575;
   position: relative;

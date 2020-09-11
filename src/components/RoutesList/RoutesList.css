@@ -1,29 +1,59 @@
 .routes-list {
+  background-color: #f4b41a;
+  color: #143D59;
+}
+
+.routes-list__show-part {
   position: relative;    
 }
 
 .routes-list__title-line {
   display: flex;
-  background-color: #00d8ff;
   justify-content: space-between;
 }
 
 .routes-list__title {
   font-size: 25px;
-  color: #222;
   text-transform: uppercase;
   text-align: center;
   font-weight: 700;
+  padding-left: 12px;
 }
 
 .routes-list__container {
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
-  background-color: #00d8ff;
   list-style-type: none;
   padding-inline-start: 0;
   padding: 0 10px;
+}
+.routes-list__button {
+  margin-left: 10px;
+  background: 0 0;
+  border: 1px solid #143D59;
+  border-radius: 2px;
+  color: #757575;
+  position: relative;
+  height: 36px;
+  margin: 0;
+  min-width: 64px;
+  padding: 0 16px;
+  display: inline-block;
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0;
+  overflow: hidden;
+  will-change: box-shadow;
+  transition: box-shadow .2s cubic-bezier(.4,0,1,1),background-color .2s cubic-bezier(.4,0,.2,1),color .2s cubic-bezier(.4,0,.2,1);
+  outline: none;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  line-height: 36px;
+  vertical-align: middle;
 }
 
 .warning-panel__header {
