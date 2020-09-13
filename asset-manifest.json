@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/eko-delivery/static/css/main.d3b2b086.chunk.css",
+    "main.css": "/eko-delivery/static/css/main.302cf830.chunk.css",
     "main.js": "/eko-delivery/static/js/main.978a513d.chunk.js",
     "main.js.map": "/eko-delivery/static/js/main.978a513d.chunk.js.map",
     "runtime-main.js": "/eko-delivery/static/js/runtime-main.099ad86e.js",
@@ -8,9 +8,9 @@
     "static/js/2.042ef795.chunk.js": "/eko-delivery/static/js/2.042ef795.chunk.js",
     "static/js/2.042ef795.chunk.js.map": "/eko-delivery/static/js/2.042ef795.chunk.js.map",
     "index.html": "/eko-delivery/index.html",
-    "precache-manifest.9178f00cc0b914175b6d01457c376841.js": "/eko-delivery/precache-manifest.9178f00cc0b914175b6d01457c376841.js",
+    "precache-manifest.6c4aef5c4faaf4c79efa3a55f31e980d.js": "/eko-delivery/precache-manifest.6c4aef5c4faaf4c79efa3a55f31e980d.js",
     "service-worker.js": "/eko-delivery/service-worker.js",
-    "static/css/main.d3b2b086.chunk.css.map": "/eko-delivery/static/css/main.d3b2b086.chunk.css.map",
+    "static/css/main.302cf830.chunk.css.map": "/eko-delivery/static/css/main.302cf830.chunk.css.map",
     "static/js/2.042ef795.chunk.js.LICENSE.txt": "/eko-delivery/static/js/2.042ef795.chunk.js.LICENSE.txt",
     "static/media/index.css": "/eko-delivery/static/media/russo-one.7ca986b0.woff2",
     "static/media/task.pdf": "/eko-delivery/static/media/task.0b33b592.pdf"
@@ -18,7 +18,7 @@
   "entrypoints": [
     "static/js/runtime-main.099ad86e.js",
     "static/js/2.042ef795.chunk.js",
-    "static/css/main.d3b2b086.chunk.css",
+    "static/css/main.302cf830.chunk.css",
     "static/js/main.978a513d.chunk.js"
   ]
 }
