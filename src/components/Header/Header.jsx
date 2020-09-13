@@ -25,7 +25,7 @@ function Header({
       <Stats />
       <div className={b('title-panel')}>
         <div className={`${b('info')} ${b('info-rate')}`}>
-          <div>USD/RUB</div>
+          <div className={b('info-rate-first-line')}>USD/RUB</div>
           <div>{rate}</div>
         </div>
         <h1 className={b('title')}>{title}</h1>

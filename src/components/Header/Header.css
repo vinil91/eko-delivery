@@ -11,6 +11,10 @@
   justify-content: center;
 }
 
+.header__info-rate-first-line {
+  width: 140px;
+}
+
 .header__title-panel {
   display: flex;
   justify-content: space-between;
