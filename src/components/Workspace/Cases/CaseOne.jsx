@@ -11,15 +11,13 @@ function CaseOne({ graph, caseInfo }) {
 
   const handleEnter = (route) => {
     setCalculatingRoute(route.toUpperCase());
-  }
+  };
 
-  const calculateCost = (route) => {
-    return graph.countPathWeight(route);
-  }
+  const calculateCost = (route) => graph.countPathWeight(route);
 
   const handleReset = () => {
     setCalculatingRoute('');
-  }
+  };
 
   return (
     <div>

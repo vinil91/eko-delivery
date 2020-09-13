@@ -17,23 +17,23 @@ function FormWithStops({ description, onEnter, placeholder }) {
       setRoute('');
       setStops('');
     }
-  }
+  };
 
   const handleChange = (event) => {
     let curRoute = event.target.value.toUpperCase();
     curRoute = curRoute.replace(/[^A-Za-z]/ig, '');
-    setRoute(curRoute)
-  }
+    setRoute(curRoute);
+  };
 
   const handleStopsChange = (event) => {
     let curStops = event.target.value;
     curStops = curStops.replace(/[^0-9]/ig, '');
     setStops(curStops);
-  }
+  };
 
   return (
     <div>
-      <h4 className="text-with-indent">{description}</h4>
+      <h4 className={`text-with-indent ${f('description')}`}>{description}</h4>
       <form className={f()} onSubmit={handleSubmit}>
         <input
           type="text"

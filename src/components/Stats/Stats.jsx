@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { block } from 'bem-cn';
 
-import './Stats.css'
+import './Stats.css';
 
 const s = block('stats');
 
@@ -40,8 +40,8 @@ Stats.defaultProps = {
 
 function mapStateToProps(state) {
   return {
-    graph: state.graph
-  }
+    graph: state.graph,
+  };
 }
 
 export default connect(mapStateToProps)(Stats);

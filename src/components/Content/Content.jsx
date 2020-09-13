@@ -24,7 +24,7 @@ Content.propTypes = {
 function mapStateToProps(state) {
   return {
     graph: state.graph,
-  }
+  };
 }
 
 export default connect(mapStateToProps)(Content);

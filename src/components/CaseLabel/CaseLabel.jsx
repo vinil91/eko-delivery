@@ -13,7 +13,7 @@ function CaseLabel({ isChecked, onChoose, caseItem: { id, name, title } }) {
   const handleCaseChoose = (event) => {
     const currentCase = event.target.value;
     onChoose(currentCase);
-  }
+  };
 
   return (
     <li className={cl()} key={id}>
@@ -55,14 +55,13 @@ CaseLabel.defaultProps = {
 function mapStateToProps(state) {
   return {
     graph: state.graph,
-  }
+  };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     onChoose: (currentCase) => dispatch(setCase(currentCase)),
-  }
+  };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CaseLabel);
-

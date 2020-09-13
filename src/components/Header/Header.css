@@ -5,8 +5,76 @@
   position: relative;
 }
 
+.header__info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.header__title-panel {
+  display: flex;
+  justify-content: space-between;
+}
+
 .header__title {
   line-height: 50px;
   font-size: 45px;
   text-align: center;
+}
+
+.header__button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.header__button {
+  margin: 0 auto;
+  background: 0 0;
+  border: 1px solid #143D59;
+  border-radius: 2px;
+  color: #757575;
+  position: relative;
+  height: 36px;
+  margin: 0 10px 0 0;
+  min-width: 64px;
+  padding: 0 16px;
+  display: inline-block;
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0;
+  overflow: hidden;
+  will-change: box-shadow;
+  transition: box-shadow .2s cubic-bezier(.4,0,1,1),background-color .2s cubic-bezier(.4,0,.2,1),color .2s cubic-bezier(.4,0,.2,1);
+  outline: none;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  line-height: 36px;
+  vertical-align: middle;
+  background: #f4b41a;
+}
+
+.header__info-weather {
+  text-align: right;
+}
+
+@media all and (max-width: 768px) {
+  .header__title-panel {
+    flex-wrap: wrap;
+  }
+
+  .header__info {
+    flex-basis: 50%;
+  }
+
+  .header__title {
+    width: 100%;
+    order: 2;
+  }
+
+  .header__info-weather {
+    order: 1;
+  }
 }

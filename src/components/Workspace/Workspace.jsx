@@ -18,7 +18,7 @@ function Workspace({ currentCase, graph }) {
       case 'case3': return <CaseThree graph={graph} caseInfo={caseData[2]} />;
       default: return <div />;
     }
-  }
+  };
   return (
     <div className="workspace">
       <ul className="case-label-container">
@@ -48,8 +48,8 @@ Workspace.propTypes = {
 function mapStateToProps(state) {
   return {
     graph: state.graph,
-    currentCase: state.currentCase
-  }
+    currentCase: state.currentCase,
+  };
 }
 
 export default connect(mapStateToProps)(Workspace);

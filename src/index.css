@@ -15,6 +15,8 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  min-width: 290px;
+  background: rgb(20,61,89, 0.1)
 }
 
 code {
@@ -24,4 +26,12 @@ code {
 
 .text-with-indent {
   text-indent: 10px;
+}
+
+@media all and (max-width: 480px) {
+  body {
+    justify-content: flex-start;
+    min-height: 100vh;
+    background: #143D59;
+  }
 }
