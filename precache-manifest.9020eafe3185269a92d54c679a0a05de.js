@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "257d2b37c598ee97aef32466913ed713",
+    "revision": "b5baba7603f8674957713fa70eae3963",
     "url": "/eko-delivery/index.html"
   },
   {
-    "revision": "6844f536b45e7564f4cc",
-    "url": "/eko-delivery/static/css/main.302cf830.chunk.css"
+    "revision": "57a626a5f666b1c7743d",
+    "url": "/eko-delivery/static/css/main.513ed6e7.chunk.css"
   },
   {
-    "revision": "b581a0cd46cf6b7e9350",
-    "url": "/eko-delivery/static/js/2.042ef795.chunk.js"
+    "revision": "44c23452d155a8ff320b",
+    "url": "/eko-delivery/static/js/2.a5687bda.chunk.js"
   },
   {
     "revision": "b612c26b1f0afb84ceaeb4b4c29c114a",
-    "url": "/eko-delivery/static/js/2.042ef795.chunk.js.LICENSE.txt"
+    "url": "/eko-delivery/static/js/2.a5687bda.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "6844f536b45e7564f4cc",
-    "url": "/eko-delivery/static/js/main.978a513d.chunk.js"
+    "revision": "57a626a5f666b1c7743d",
+    "url": "/eko-delivery/static/js/main.5f9855b1.chunk.js"
   },
   {
     "revision": "324a296856ae623472d5",
