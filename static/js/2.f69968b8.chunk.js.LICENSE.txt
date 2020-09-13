@@ -5,6 +5,15 @@ object-assign
 */
 
 /*!
+   Transformation Matrix v2.0
+   (c) Epistemex 2014-2015
+   www.epistemex.com
+   By Ken Fyrstenberg
+   Contributions by leeoniya.
+   License: MIT, header required.
+   */
+
+/*!
  * bem-cn v3.0.1
  * Friendly BEM class names generator, greate for React
  * @author Alexander Burtsev, https://github.com/albburtsev
