@@ -3,26 +3,28 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { block } from 'bem-cn';
 
-import { Route, Form} from '..';
+import { Route, Form } from '..';
 
 import { resetGraph, setGraph } from '../../redux/actions/actions';
 import parser from '../../helpers/parser';
 import Graph from '../../models/Graph';
 
-import './RoutesList.css'
+import './RoutesList.css';
 
 const wp = block('warning-panel');
 const rl = block('routes-list');
 
-function RoutesList({ enteredLine, graph: { edges }, isWronglyParsed, onSubmit, onReset }) {
+function RoutesList({
+  enteredLine, graph: { edges }, isWronglyParsed, onSubmit, onReset,
+}) {
   const atLeastOneEdge = edges.length > 0;
 
   const onEnter = (value) => {
     const nodes = parser(value);
     const correctParsedNodes = nodes.filter((node) => node.start !== '*' && node.end !== '*' && node.weight !== '*');
-    const isWronglyParsed = !(nodes.length === correctParsedNodes.length);
+    const isValueWronglyParsed = !(nodes.length === correctParsedNodes.length);
     const graph = new Graph(correctParsedNodes);
-    onSubmit(graph, value, isWronglyParsed);
+    onSubmit(graph, value, isValueWronglyParsed);
   };
 
   return (
@@ -100,22 +102,21 @@ RoutesList.defaultProps = {
     vertexes: [],
   },
   enteredLine: '',
-  isWronglyParsed: false,
 };
 
 function mapStateToProps(state) {
   return {
     graph: state.graph,
     enteredLine: state.userInput.enteredLine,
-    isWronglyParsed: state.userInput.isWronglyParsed
-  }
+    isWronglyParsed: state.userInput.isWronglyParsed,
+  };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     onReset: () => dispatch(resetGraph()),
     onSubmit: (graph, enteredLine, isWronglyParsed) => dispatch(setGraph(graph, enteredLine, isWronglyParsed)),
-  }
+  };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(RoutesList);

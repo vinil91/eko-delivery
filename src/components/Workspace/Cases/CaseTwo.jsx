@@ -13,20 +13,20 @@ function CaseTwo({ graph, caseInfo }) {
   const handleEnter = (route, stops) => {
     setCalculatingRoute(route.toUpperCase());
     setCalculatingStops(stops);
-  }
+  };
 
-  const calculateDeliveryAmount = (route, stops) => {
-    return graph.countTripsWithLessThanNStops(route, Number(stops));
-  }
+  const calculateDeliveryAmount = (route, stops) => graph.countTripsWithLessThanNStops(route, Number(stops));
 
   const handleReset = () => {
     setCalculatingRoute('');
     setCalculatingStops('');
-  }
+  };
 
   return (
     <div>
-      <h2 className="text-with-indent">CaseTwo. The number of possible delivery route that can be construct by the given conditions.</h2>
+      <h2 className="text-with-indent">
+        CaseTwo. The number of possible delivery route that can be construct by the given conditions.
+      </h2>
       <FormWithStops
         onEnter={handleEnter}
         description={caseInfo.description}

@@ -1,13 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Header, Content, Footer } from './components';
+import {
+  Header, Content, Footer, Loader,
+} from './components';
 
-import './index.css'
+import './index.css';
 
 function App({ title }) {
   return (
     <div className="main">
+      <Loader />
       <Header title={title} />
       <Content />
       <Footer />

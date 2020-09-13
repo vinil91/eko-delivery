@@ -1,0 +1,42 @@
+.loader__animation {
+  width: 30%;
+  margin: auto;
+  z-index: 100;
+}
+
+@media all and (max-width: 640px) {
+  .loader__animation {
+    width: 50%;
+  }
+}
+
+.loader__backdrop {
+  position:fixed;
+  z-index: 10;
+  padding:0;
+  margin:0;
+  top:0;
+  left:0;
+  width: 100%;
+  height: 100%;
+  background: rgba(244, 179, 26, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader-enter {
+  opacity: 0;
+}
+.loader-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 300ms;
+}
+.loader-exit {
+  opacity: 1;
+}
+.loader-exit-active {
+  opacity: 0;
+  transition: opacity 300ms;
+}

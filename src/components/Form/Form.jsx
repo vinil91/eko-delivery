@@ -6,7 +6,9 @@ import './Form.css';
 
 const f = block('form');
 
-function Form({ description, caseAB, caseForm, placeholder, onEnter }) {
+function Form({
+  description, caseAB, caseForm, placeholder, onEnter,
+}) {
   const [value, setValue] = useState('');
 
   const handleSubmit = (event) => {
@@ -15,7 +17,7 @@ function Form({ description, caseAB, caseForm, placeholder, onEnter }) {
       onEnter(value);
       setValue('');
     }
-  }
+  };
 
   const handleChange = (event) => {
     let curValue = event.target.value.toUpperCase();
@@ -25,8 +27,8 @@ function Form({ description, caseAB, caseForm, placeholder, onEnter }) {
       curValue = curValue.replace(/[^A-Za-z0-9,]/ig, '');
     }
     setValue(curValue);
-  }
-    return (
+  };
+  return (
     <div>
       <h4 className={`text-with-indent ${f('description')}`}>{description}</h4>
       <form

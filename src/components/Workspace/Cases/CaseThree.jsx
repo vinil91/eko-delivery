@@ -11,15 +11,13 @@ function CaseThree({ graph, caseInfo }) {
 
   const handleEnter = (route) => {
     setCalculatingRoute(route.toUpperCase());
-  }
+  };
 
-  const calculateCheapestCost = (route) => {
-    return graph.findBestPath(route);
-  }
+  const calculateCheapestCost = (route) => graph.findBestPath(route);
 
   const handleReset = () => {
     setCalculatingRoute('');
-  }
+  };
 
   return (
     <div>
