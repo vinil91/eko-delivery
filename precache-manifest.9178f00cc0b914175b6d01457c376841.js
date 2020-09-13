@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "28d636ea353ab30614b01be72fcad1e2",
+    "revision": "d210de4189bda2ace326dcaf81dae58d",
     "url": "/eko-delivery/index.html"
   },
   {
-    "revision": "3aa0666b9df071e326a7",
-    "url": "/eko-delivery/static/css/main.9638cd46.chunk.css"
+    "revision": "52320b54c0593b0762e2",
+    "url": "/eko-delivery/static/css/main.d3b2b086.chunk.css"
   },
   {
     "revision": "b581a0cd46cf6b7e9350",
@@ -16,7 +16,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/eko-delivery/static/js/2.042ef795.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "3aa0666b9df071e326a7",
+    "revision": "52320b54c0593b0762e2",
     "url": "/eko-delivery/static/js/main.978a513d.chunk.js"
   },
   {
