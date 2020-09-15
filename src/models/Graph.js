@@ -4,13 +4,16 @@ import min from 'lodash/min';
 
 class Graph {
   constructor(edges) {
+    const initialVertexes = (edges) => {
+      const result = [];
+      edges.forEach((edge) => {
+        if (result.indexOf(edge.start) === -1) result.push(edge.start);
+        if (result.indexOf(edge.end) === -1) result.push(edge.end);
+      })
+      return result;
+    }
     this.edges = edges;
-    this.vertexes = [];
-
-    edges.forEach((edge) => {
-      if (this.vertexes.indexOf(edge.start) === -1) this.vertexes.push(edge.start);
-      if (this.vertexes.indexOf(edge.end) === -1) this.vertexes.push(edge.end);
-    });
+    this.vertexes = initialVertexes(edges);
   }
 
   dijkstra(fromPoint, toPoint) {
