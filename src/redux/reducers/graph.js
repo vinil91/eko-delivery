@@ -9,7 +9,6 @@ export default function graph(state = initialState, action) {
       return graph;
     }
     case 'RESET_GRAPH': {
-      // const { graph } = action.payload;
       return new Graph([]);
     }
     default:

@@ -20,10 +20,7 @@ function RoutesList({
   const atLeastOneEdge = edges.length > 0;
 
   const onEnter = (value) => {
-    const nodes = parser(value);
-    const correctParsedNodes = nodes.filter((node) => node.start !== '*' && node.end !== '*' && node.weight !== '*');
-    const isValueWronglyParsed = !(nodes.length === correctParsedNodes.length);
-    const graph = new Graph(correctParsedNodes);
+    const { graph, isValueWronglyParsed } = parser(value);
     onSubmit(graph, value, isValueWronglyParsed);
   };
 
